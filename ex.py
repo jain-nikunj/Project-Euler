@@ -7,6 +7,9 @@ def sum_upto(n):
 def sum_squares_upto(n):
     return (n)*(n+1)*(2*n + 1)/6
 
+def cube(x):
+    return pow(x, 3)
+
 @memoize
 def is_prime(n):
     for i in range(2, int(sqrt(n))+1 ):
