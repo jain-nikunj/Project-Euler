@@ -146,6 +146,7 @@ def prime(n):
 def square(x): 
     return x*x
 
+@memoize
 def pythagorean(a,b,c):
     return (square(a) + square(b) == square(c))
 
