@@ -1,6 +1,41 @@
 from functools import lru_cache 
 memoize = lru_cache(None)
 
+def is_leap_year(year):
+    return year%4 ==0 and (bool(year%100) or year%400==0)
+
+def string_date(day, month, year):
+    """Returns a string version of a given day/month/year"""
+    return str(day) + "/" + str(month) + "/" + str(year)
+
+def reduce_date_by(n, date):
+    month_days = {1:31, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
+    day, month, year = [int(i) for i in date.split("/")]
+    day -= n
+    if is_leap_year(year):
+        month_days[2] = 29
+    else:
+        month_days[2] = 28
+    if day > 0:
+        return string_date(day, month, year)
+    month -= 1
+    if month == 0:
+        month = 12
+    day += month_days[month]
+    if not month == 12:
+        return string_date(day, month, year)
+    return string_date(day, month, year-1)
+
+@memoize
+def weekday(date):
+    """Date of the format string DD/MM/YYYY"""
+    days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"]
+    day, month, year = [int(i) for i in date.split("/")]
+    if year == 1900 and month == 1:
+        return days[day%7 - 1]
+    return weekday(reduce_date_by(7, string_date(day, month, year)))
+     
+
 def list_product(lst):
     p = 1
     for i in lst:
