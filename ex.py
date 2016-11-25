@@ -16,6 +16,9 @@ def is_prime(n):
         if n%i == 0: return False
     return True
 
+def is_permutation(a, b):
+    return digits(a) in permutations(digits(b))
+
 def sum_digits(n):
     if n<10: return n
     else : return n%10 + sum_digits(n//10)
@@ -72,7 +75,17 @@ def sum_factors(x):
     for a in factors(x):
         _sum += a[0] + a[1]
     return _sum
+
+def primes(lower=2, upper=10):
+    return [i for i in range(lower, upper+1) if is_prime(i)]
     
+
+def digits_to_num(digits):
+    num = 0
+    for digit in digits:
+        num = num*10 + digit
+    return num
+
 def is_amicable(x):
     a = sum_factors(x) - x
     b = sum_factors(a) - a
@@ -231,6 +244,18 @@ def longest_collatz(n):
 
 def factors(n):
     return [[x,n//x] for x in range(1,int(sqrt(n))+1) if n%x == 0]
+
+def permutations(digits):
+    if len(digits) == 1:
+        return [digits]
+    perms = []
+    for i in range(len(digits)):
+        arrs = permutations(digits[:i] + digits[i+1:])
+        for arr in arrs:
+            arr.append(digits[i])
+        perms.extend(arrs)
+    return remove_duplicates(perms)
+
 
 def sqrt(n):
     return pow(n,0.5)
