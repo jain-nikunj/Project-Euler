@@ -107,6 +107,17 @@ def make_sum_with_power(a):
 def pow_list(a,b_min, b_max):
     return [pow(a,x) for x in range(b_min, b_max+1)]
 
+def is_palindrome(n):
+    dig = digits(n)
+    for i in range(len(dig)):
+        j = len(dig)-1 - i
+        if not dig[i] == dig[j]:
+            return False
+    return True
+
+def is_binary_palindrome(n):
+    return is_palindrome(binary(n))
+
 def remove_duplicates(_list):
     list_ = []
     for a in _list:
@@ -118,6 +129,14 @@ def distinct_powers(a_min, a_max, b_min, b_max):
     for a in range(a_min, a_max +1):
         _list.extend(pow_list(a, b_min, b_max))
     return remove_duplicates(_list)
+
+def binary(n):
+    dig = []
+    while(n>0):
+        dig.append(n%2)
+        n = n//2
+    dig.reverse()
+    return digits_to_num(dig)
 
 def digits(x):
     dig = []
