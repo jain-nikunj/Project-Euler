@@ -57,6 +57,9 @@ def is_prime(n):
         if n%i == 0: return False
     return True
 
+def name_score(name):
+    return sum([ord(letter)-64  for letter in name])
+
 def is_permutation(a, b):
     return digits(a) in permutations(digits(b))
 
