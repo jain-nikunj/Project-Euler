@@ -1,6 +1,12 @@
 from functools import lru_cache 
 memoize = lru_cache(None)
 
+def list_product(lst):
+    p = 1
+    for i in lst:
+        p *= i 
+    return p
+
 def sum_upto(n):
     return (n)*(n+1)/2
 
