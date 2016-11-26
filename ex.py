@@ -282,7 +282,7 @@ def two_sums(lst):
 
 @memoize
 def is_abundant(x):
-    return sum([x+y for x,y in factors(x)]) > 2*x
+    return sum([x+y if not x==y else x for x,y in factors(x)]) > 2*x
 
 def is_composite(x):
     return not is_prime(x)
@@ -306,7 +306,7 @@ def longest_collatz(n):
     return longest
 
 def factors(n):
-    return [[x,n//x] for x in range(1,int(sqrt(n))+1) if n%x == 0]
+    return [[x, n//x] for x in range(1, int(sqrt(n)) + 1) if n%x == 0]
 
 def permutations(digits):
     if len(digits) == 1:
