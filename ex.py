@@ -174,6 +174,10 @@ def distinct_powers(a_min, a_max, b_min, b_max):
         _list.extend(pow_list(a, b_min, b_max))
     return remove_duplicates(_list)
 
+@memoize
+def prime_factors(n):
+    return [x for x in range(2, int(n//2)+1) if n%x == 0 and is_prime(x)]
+
 def binary(n):
     dig = []
     while(n>0):
