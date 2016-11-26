@@ -309,6 +309,7 @@ def factors(n):
     return [[x, n//x] for x in range(1, int(sqrt(n)) + 1) if n%x == 0]
 
 def permutations(digits):
+    print(digits)
     if len(digits) == 1:
         return [digits]
     perms = []
