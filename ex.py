@@ -51,7 +51,13 @@ def list_product(lst):
     return p
 
 def sum_upto(n):
-    return (n)*(n+1)/2
+    return (n)*(n+1)//2
+
+def word_score(word):
+    return sum([ord(letter)-64 for letter in word.upper()])
+
+def triangle_nums_upto(n):
+    return [sum_upto(i) for i in range(1, n+1)]
 
 def sum_squares_upto(n):
     return (n)*(n+1)*(2*n + 1)/6
