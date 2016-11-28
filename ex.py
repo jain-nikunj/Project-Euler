@@ -4,8 +4,10 @@ memoize = lru_cache(None)
 def pandigitals_upto(n):
     return [x for x in range(n+1) if is_pandigital(x)]
 
-def is_pandigital(n):
-    return len(digits(n)) == len(set(digits(n))) and len(digits(n)) == max(digits(n)) and min(digits(n)) == 1
+def is_pandigital(n, least=1, highest=None):
+    if not highest:
+        highest = max(digits(n))
+    return len(digits(n)) == len(set(digits(n))) and len(digits(n)) == highest and min(digits(n)) == least 
 
 def is_leap_year(year):
     return year%4 ==0 and (bool(year%100) or year%400==0)
