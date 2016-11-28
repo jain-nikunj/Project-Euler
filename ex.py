@@ -59,6 +59,7 @@ def cube(x):
 
 @memoize
 def is_prime(n):
+    if n == 1: return False
     for i in range(2, int(sqrt(n))+1 ):
         if n%i == 0: return False
     return True
@@ -119,6 +120,12 @@ def make_triangle(data):
         for i in range(0,len(a)):
             a[i].branches = [b[i], b[i+1]]
         return a
+
+def left_truncate(n):
+    return digits_to_num(digits(n)[1:])
+
+def right_truncate(n):
+    return n//10
 
 def sum_factors(x):
     _sum = 0
