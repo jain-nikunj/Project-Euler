@@ -253,6 +253,11 @@ def prime(n):
 def square(x): 
     return x*x
 
+def reverse_num(n):
+    dig = digits(n)
+    dig.reverse()
+    return digits_to_num(dig)
+
 @memoize
 def pythagorean(a,b,c):
     return (square(a) + square(b) == square(c))
