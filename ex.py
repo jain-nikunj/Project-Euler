@@ -1,6 +1,10 @@
 from functools import lru_cache 
 memoize = lru_cache(None)
 
+@memoize
+def square_digit_sum(n):
+    return sum([pow(x,2) for x in digits(n)])
+
 def pandigitals_upto(n):
     return [x for x in range(n+1) if is_pandigital(x)]
 
