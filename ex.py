@@ -203,6 +203,34 @@ def distinct_powers(a_min, a_max, b_min, b_max):
 def prime_factors(n):
     return [x for x in range(2, int(n//2)+1) if n%x == 0 and is_prime(x)]
 
+def bnot(n):
+    if n: return 0
+    return 1
+
+def xor(n1, n2):
+    d1, d2, dxor = digits(binary(n1)), digits(binary(n2)), []
+    d1.reverse()
+    d2.reverse()
+    while(len(d1) > len(d2)):
+        d2.append(0)
+    while(len(d1) < len(d2)):
+        d1.append(0)
+    assert len(d1) == len(d2)
+    for i in range(len(d1)):
+        dxor.append(d1[i]*bnot(d2[i]) + bnot(d1[i])*d2[i]) 
+    dxor.reverse()
+    return decimal(digits_to_num(dxor))
+
+def add_binary(b1, b2):
+    return binary(decimal(b1) + decimal(b2))
+    
+def decimal(b):
+    num = 0
+    b = digits(b)
+    for dig in b:
+        num = 2*num + dig
+    return num
+
 def binary(n):
     dig = []
     while(n>0):
