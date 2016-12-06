@@ -20,6 +20,12 @@ def string_date(day, month, year):
     """Returns a string version of a given day/month/year"""
     return str(day) + "/" + str(month) + "/" + str(year)
 
+def hexagonal(n):
+    return n*(2*n-1)
+
+def pentagonal(n):
+    return n*(3*n-1)//2
+
 def reduce_date_by(n, date):
     month_days = {1:31, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
     day, month, year = [int(i) for i in date.split("/")]
